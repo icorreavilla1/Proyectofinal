@@ -87,7 +87,7 @@ if img_file_buffer is not None:
                 st.write("Tengo la canción perfecta para que te sigas sintiendo así de feliz.")
                 st.audio("cancionfeliz.mp3", format="audio/mp3", start_time=0)
                 st.components.v1.html(
-     """
+    """
     <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/61EvHDxTH9tvyCyFwzQLTP?utm_source=generator" 
     width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
     loading="lazy"></iframe>
@@ -95,7 +95,7 @@ if img_file_buffer is not None:
     height=352,
 )
             elif st.session_state.estado_anterior == "triste":
-                st.audio("cancióntriste.mp3", format="audio/mp3", start_time=0)
+                st.audio("canciontriste.mp3", format="audio/mp3", start_time=0)
                 st.write("Tengo la canción perfecta para acompañarte en este momento.")
                 st.components.v1.html(
     """
