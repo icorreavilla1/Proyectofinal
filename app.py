@@ -51,21 +51,21 @@ if img_file_buffer is not None:
 
     # Condiciones para cada estado de ánimo con botones
     if prediction[0][0] > 0.3 and st.session_state.estado_anterior != "feliz":
-        st.header("Feliz")
+        st.header("Veo que te sientes feliz")
         st.audio("1feliz.mp3", format="audio/mp3", start_time=0)
         client1.publish("misabela", "{'gesto': 'feliz'}", qos=0, retain=False)
         st.session_state.estado_anterior = "feliz"
         st.session_state.respuesta = None
 
     elif prediction[0][1] > 0.3 and st.session_state.estado_anterior != "triste":
-        st.header("Triste")
+        st.header("Veo que te sientes triste")
         st.audio("1triste.mp3", format="audio/mp3", start_time=0)
         client1.publish("misabela", "{'gesto': 'triste'}", qos=0, retain=False)
         st.session_state.estado_anterior = "triste"
         st.session_state.respuesta = None
 
     elif prediction[0][2] > 0.3 and st.session_state.estado_anterior != "enojado":
-        st.header("Enojado")
+        st.header("Veo que te sientes enojada")
         st.audio("1enojada.mp3", format="audio/mp3", start_time=0)
         client1.publish("misabela", "{'gesto': 'enojado'}", qos=0, retain=False)
         st.session_state.estado_anterior = "enojado"
@@ -74,7 +74,7 @@ if img_file_buffer is not None:
     # Mostrar botones de respuesta después de la emoción detectada
     if st.session_state.estado_anterior in ["feliz", "triste", "enojado"]:
         if st.session_state.respuesta is None:
-            #st.write("¿Te gustaría escuchar otra canción relacionada?")
+            st.write("¿Es cirto?")
             if st.button("Sí"):
                 st.session_state.respuesta = "si"
             elif st.button("No"):
