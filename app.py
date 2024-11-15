@@ -51,21 +51,24 @@ if img_file_buffer is not None:
     # Load the image into the array
     data[0] = normalized_image_array
 
-    # run the inference
-    prediction = model.predict(data)
-    print(prediction)
-    if prediction[0][0]>0.3:
-      st.header('Feliz')
-      st.audio('1feliz.mp3', format='audio/mp3', start_time=0)
-      client1.publish("misabela","{'gesto': 'feliz'}",qos=0, retain=False)
-      time.sleep(0.2)
-    if prediction[0][1]>0.3:
-      st.header('Triste')
-      st.audio('1triste.mp3', format='audio/mp3', start_time=0)
-      client1.publish("misabela","{'gesto': 'triste'}",qos=0, retain=False)
-      time.sleep(0.2)  
-    if prediction[0][2]>0.3:
-      st.header('Enojado')
-      st.audio('1enojada.mp3', format='audio/mp3', start_time=0)
-      client1.publish("misabela","{'gesto': 'enojado'}",qos=0, retain=False)
-      time.sleep(0.2)      
+   if "estado_anterior" not in st.session_state:
+        st.session_state.estado_anterior = None
+
+    # Condiciones para cada estado de ánimo
+    if prediction[0][0] > 0.3 and st.session_state.estado_anterior != "feliz":
+        st.header("Feliz")
+        st.audio("1feliz.mp3", format="audio/mp3", start_time=0)
+        client1.publish("misabela", "{'gesto': 'feliz'}", qos=0, retain=False)
+        st.session_state.estado_anterior = "feliz"
+
+    elif prediction[0][1] > 0.3 and st.session_state.estado_anterior != "triste":
+        st.header("Triste")
+        st.audio("1triste.mp3", format="audio/mp3", start_time=0)
+        client1.publish("misabela", "{'gesto': 'triste'}", qos=0, retain=False)
+        st.session_state.estado_anterior = "triste"
+
+    elif prediction[0][2] > 0.3 and st.session_state.estado_anterior != "enojado":
+        st.header("Enojado")
+        st.audio("1enojada.mp3", format="audio/mp3", start_time=0)
+        client1.publish("misabela", "{'gesto': 'enojado'}", qos=0, retain=False)
+        st.session_state.estado_anterior = "enojado"
