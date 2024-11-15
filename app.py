@@ -18,14 +18,7 @@ def on_message(client, userdata, message):
 
 st.title("Feelify: Your Mood, Your Music 🎶")
 st.subheader("Analizando tu estado de ánimo para ofrecerte la música perfecta")
-st.components.v1.html(
-    """
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4gzsuuZypVbxs0Af1LSZyB?utm_source=generator&theme=0" 
-    width="100%" height="352" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-    loading="lazy"></iframe>
-    """,
-    height=352,
-)
+
 
 broker = "broker.hivemq.com"
 port = 1883
@@ -93,13 +86,45 @@ if img_file_buffer is not None:
             if st.session_state.estado_anterior == "feliz":
                 st.write("Tengo la canción perfecta para que te sigas sintiendo así de feliz.")
                 st.audio("cancionfeliz.mp3", format="audio/mp3", start_time=0)
+                st.components.v1.html(
+     """
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/61EvHDxTH9tvyCyFwzQLTP?utm_source=generator" 
+    width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+    loading="lazy"></iframe>
+    """,
+    height=352,
+)
             elif st.session_state.estado_anterior == "triste":
                 st.audio("cancióntriste.mp3", format="audio/mp3", start_time=0)
                 st.write("Tengo la canción perfecta para acompañarte en este momento.")
+                st.components.v1.html(
+    """
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX1wBZWxWB0O1?utm_source=generator" 
+    width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+    loading="lazy"></iframe>
+    """,
+    height=352,
+)
             elif st.session_state.estado_anterior == "enojado":
                 st.audio("cancionenojado.mp3", format="audio/mp3", start_time=0)
                 st.write("Tengo la canción perfecta para este momento de enojo.")
+                st.components.v1.html(
+    """
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX1wBZWxWB0O1?utm_source=generator" 
+    width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+    loading="lazy"></iframe>
+    """,
+    height=352,
+)
         elif st.session_state.respuesta == "no":
             st.audio("neutro.mp3", format="audio/mp3", start_time=0)
             st.write("Está bien, esta canción podría acompañarte un rato")
+            st.components.v1.html(
+    """
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1EVHGWrwldPRtj?utm_source=generator" 
+    width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+    loading="lazy"></iframe>
+    """,
+    height=352,
+)
 
