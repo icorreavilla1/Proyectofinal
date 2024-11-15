@@ -83,11 +83,15 @@ if img_file_buffer is not None:
         # Reproducir el audio según la respuesta
         if st.session_state.respuesta == "si":
             if st.session_state.estado_anterior == "feliz":
+                st.write("Tengo la canción perfecta para que te sigas sintiendo así de feliz.")
                 st.audio("cancionfeliz.mp3", format="audio/mp3", start_time=0)
             elif st.session_state.estado_anterior == "triste":
-                st.audio("canciontriste.mp3", format="audio/mp3", start_time=0)
+                st.audio("cancióntriste.mp3", format="audio/mp3", start_time=0)
+                st.write("Tengo la canción perfecta para acompañarte en este momento.")
             elif st.session_state.estado_anterior == "enojado":
                 st.audio("cancionenojado.mp3", format="audio/mp3", start_time=0)
+                st.write("Tengo la canción perfecta para este momento de enojo.")
         elif st.session_state.respuesta == "no":
             st.audio("neutro.mp3", format="audio/mp3", start_time=0)
+            st.write("Está bien, esta canción podría acompañarte un rato")
 
