@@ -62,3 +62,7 @@ if img_file_buffer is not None:
       st.header('Triste')
       client1.publish("misabela","{'gesto': 'triste'}",qos=0, retain=False)
       time.sleep(0.2)  
+    if prediction[0][2]>0.3:
+      st.header('Enojado')
+      client1.publish("misabela","{'gesto': 'enojado'}",qos=0, retain=False)
+      time.sleep(0.2)      
