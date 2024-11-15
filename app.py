@@ -19,8 +19,8 @@ def on_message(client, userdata, message):
 image = Image.open('FEELIFY.BANNER.png')
 st.image(image, width=1000)
 
-st.title("Feelify: Your Mood, Your Music 🎶")
-st.subheader("Analizando tu estado de ánimo para ofrecerte la música perfecta")
+st.title("Match your music with your feelings")
+st.subheader("No solo escucha música, sientela.")
 
 with st.sidebar:
     st.subheader("¿Como funciona FEELIFY?")
@@ -36,7 +36,7 @@ client1.connect(broker, port)
 model = load_model('keras_model.h5')
 data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 
-img_file_buffer = st.camera_input("Toma una Foto")
+img_file_buffer = st.camera_input("¡Hola! Tómate una foto para analizar tu mood actual")
 
 if img_file_buffer is not None:
     img = Image.open(img_file_buffer)
@@ -82,9 +82,9 @@ if img_file_buffer is not None:
     if st.session_state.estado_anterior in ["feliz", "triste", "enojado"]:
         if st.session_state.respuesta is None:
             st.write("¿Es cierto?")
-            if st.button("Sí"):
+            if st.button("SÍ, así me siento"):
                 st.session_state.respuesta = "si"
-            elif st.button("No"):
+            elif st.button("NO, creo que me siento de otra manera"):
                 st.session_state.respuesta = "no"
 
         # Reproducir el audio según la respuesta
