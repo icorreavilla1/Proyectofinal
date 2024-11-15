@@ -16,6 +16,9 @@ def on_message(client, userdata, message):
     message_received = str(message.payload.decode("utf-8"))
     st.write(message_received)
 
+image = Image.open('FEELIFY.BANNER.png')
+st.image(image, width=900)
+
 st.title("Feelify: Your Mood, Your Music 🎶")
 st.subheader("Analizando tu estado de ánimo para ofrecerte la música perfecta")
 
