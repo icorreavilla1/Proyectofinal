@@ -18,7 +18,8 @@ def on_message(client, userdata, message):
     message_received=str(message.payload.decode("utf-8"))
     st.write(message_received)
 
-        
+st.title("Feelify: Your Mood, Your Music 🎶")
+st.subheader("Analizando tu estado de ánimo para ofrecerte la música perfecta")        
 
 
 broker="broker.hivemq.com"
@@ -31,7 +32,6 @@ client1.connect(broker,port)
 model = load_model('keras_model.h5')
 data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 
-st.title("Cerradura Inteligente")
 
 img_file_buffer = st.camera_input("Toma una Foto")
 
