@@ -19,6 +19,9 @@ def on_message(client, userdata, message):
 st.title("Feelify: Your Mood, Your Music 🎶")
 st.subheader("Analizando tu estado de ánimo para ofrecerte la música perfecta")
 
+with st.sidebar:
+    st.subheader("¿Como funciona FEELIFY?")
+    st.write("1. Haz clic en 'Escuchar' para iniciar la grabacion.")
 
 broker = "broker.hivemq.com"
 port = 1883
