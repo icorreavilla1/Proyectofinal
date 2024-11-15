@@ -18,6 +18,14 @@ def on_message(client, userdata, message):
 
 st.title("Feelify: Your Mood, Your Music 🎶")
 st.subheader("Analizando tu estado de ánimo para ofrecerte la música perfecta")
+st.components.v1.html(
+    """
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4gzsuuZypVbxs0Af1LSZyB?utm_source=generator&theme=0" 
+    width="100%" height="352" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+    loading="lazy"></iframe>
+    """,
+    height=352,
+)
 
 broker = "broker.hivemq.com"
 port = 1883
