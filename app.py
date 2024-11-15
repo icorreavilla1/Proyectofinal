@@ -46,22 +46,48 @@ if img_file_buffer is not None:
     # Verificamos que st.session_state tenga un estado anterior registrado
     if "estado_anterior" not in st.session_state:
         st.session_state.estado_anterior = None
+    if "respuesta" not in st.session_state:
+        st.session_state.respuesta = None
 
-    # Condiciones para cada estado de ánimo
+    # Condiciones para cada estado de ánimo con botones
     if prediction[0][0] > 0.3 and st.session_state.estado_anterior != "feliz":
         st.header("Feliz")
         st.audio("1feliz.mp3", format="audio/mp3", start_time=0)
         client1.publish("misabela", "{'gesto': 'feliz'}", qos=0, retain=False)
         st.session_state.estado_anterior = "feliz"
+        st.session_state.respuesta = None
 
     elif prediction[0][1] > 0.3 and st.session_state.estado_anterior != "triste":
         st.header("Triste")
         st.audio("1triste.mp3", format="audio/mp3", start_time=0)
         client1.publish("misabela", "{'gesto': 'triste'}", qos=0, retain=False)
         st.session_state.estado_anterior = "triste"
+        st.session_state.respuesta = None
 
     elif prediction[0][2] > 0.3 and st.session_state.estado_anterior != "enojado":
         st.header("Enojado")
         st.audio("1enojada.mp3", format="audio/mp3", start_time=0)
         client1.publish("misabela", "{'gesto': 'enojado'}", qos=0, retain=False)
         st.session_state.estado_anterior = "enojado"
+        st.session_state.respuesta = None
+
+    # Mostrar botones de respuesta después de la emoción detectada
+    if st.session_state.estado_anterior in ["feliz", "triste", "enojado"]:
+        if st.session_state.respuesta is None:
+            #st.write("¿Te gustaría escuchar otra canción relacionada?")
+            if st.button("Sí"):
+                st.session_state.respuesta = "si"
+            elif st.button("No"):
+                st.session_state.respuesta = "no"
+
+        # Reproducir el audio según la respuesta
+        if st.session_state.respuesta == "si":
+            if st.session_state.estado_anterior == "feliz":
+                st.audio("cancionfeliz.mp3", format="audio/mp3", start_time=0)
+            elif st.session_state.estado_anterior == "triste":
+                st.audio("canciontriste.mp3", format="audio/mp3", start_time=0)
+            elif st.session_state.estado_anterior == "enojado":
+                st.audio("cancionenojado.mp3", format="audio/mp3", start_time=0)
+        elif st.session_state.respuesta == "no":
+            st.audio("neutro.mp3", format="audio/mp3", start_time=0)
+
