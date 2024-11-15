@@ -56,13 +56,16 @@ if img_file_buffer is not None:
     print(prediction)
     if prediction[0][0]>0.3:
       st.header('Feliz')
+      st.audio('1feliz.mp3', format='audio/mp3', start_time=0)
       client1.publish("misabela","{'gesto': 'feliz'}",qos=0, retain=False)
       time.sleep(0.2)
     if prediction[0][1]>0.3:
       st.header('Triste')
+      st.audio('1triste.mp3', format='audio/mp3', start_time=0)
       client1.publish("misabela","{'gesto': 'triste'}",qos=0, retain=False)
       time.sleep(0.2)  
     if prediction[0][2]>0.3:
       st.header('Enojado')
+      st.audio('1enojada.mp3', format='audio/mp3', start_time=0)
       client1.publish("misabela","{'gesto': 'enojado'}",qos=0, retain=False)
       time.sleep(0.2)      
