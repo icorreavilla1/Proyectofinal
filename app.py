@@ -17,7 +17,7 @@ def on_message(client, userdata, message):
     st.write(message_received)
 
 image = Image.open('FEELIFY.BANNER.png')
-st.image(image, width=900)
+st.image(image, width=1000)
 
 st.title("Feelify: Your Mood, Your Music 🎶")
 st.subheader("Analizando tu estado de ánimo para ofrecerte la música perfecta")
