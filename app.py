@@ -15,28 +15,6 @@ def on_message(client, userdata, message):
     time.sleep(2)
     message_received = str(message.payload.decode("utf-8"))
     st.write(message_received)
-import os
-
-# Ruta local de la imagen de fondo
-img_path = "fondo.png"
-
-# CSS para establecer la imagen de fondo
-page_bg_img = f'''
-<style>
-.stApp {{
-    background-image: url("file://{os.path.abspath(img_path)}");
-    background-size: cover;
-    background-attachment: fixed;
-}}
-</style>
-'''
-
-# Aplicar el CSS a la app
-st.markdown(page_bg_img, unsafe_allow_html=True)
-
-# Contenido de la app
-st.title("Mi Aplicación con Fondo Personalizado")
-st.write("Este es un ejemplo de cómo añadir una imagen de fondo en Streamlit.")
 
 image = Image.open('FEELIFY.BANNER.png')
 st.image(image, width=1000)
