@@ -75,7 +75,7 @@ if img_file_buffer is not None:
     # Mostrar botones de respuesta después de la emoción detectada
     if st.session_state.estado_anterior in ["feliz", "triste", "enojado"]:
         if st.session_state.respuesta is None:
-            st.write("¿Es cirto?")
+            st.write("¿Es cierto?")
             if st.button("Sí"):
                 st.session_state.respuesta = "si"
             elif st.button("No"):
@@ -110,7 +110,7 @@ if img_file_buffer is not None:
                 st.write("Tengo la canción perfecta para este momento de enojo.")
                 st.components.v1.html(
     """
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX1wBZWxWB0O1?utm_source=generator" 
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/7iVI3u03k78JvGu8YaOKR2?utm_source=generator" 
     width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
     loading="lazy"></iframe>
     """,
